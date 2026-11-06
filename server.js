@@ -58,6 +58,7 @@ app.use('/api/invoices', invoiceRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/reports', reportRoutes);
 
+
 app.use('/api', (req, res) => {
     res.status(404).json({
         success: false,
@@ -85,4 +86,9 @@ server.on('close', () => {
 
 process.on('beforeExit', () => {
     console.log('Node.js is about to exit.');
+});
+
+
+app.get('/reviews', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'reviews.html'));
 });
